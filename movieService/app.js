@@ -6,9 +6,6 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./config/swagger.config'); 
 const { insertInitialData } = require('./utils/seedData')
 const configureMiddleware = require('./serviceRegistration/middleware.registration');
-const jwt = require('jsonwebtoken');
-const AWS = require('aws-sdk');
-const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 
 require('./serviceRegistration/env.registration');
 

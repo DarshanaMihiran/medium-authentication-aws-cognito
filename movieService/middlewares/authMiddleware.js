@@ -46,6 +46,8 @@ const authorizeRole = (requiredRole) => {
         res.status(403).json({ message: 'Forbidden' });
       }
     } catch (err) {
+
+      
       console.log(err);
       res.status(401).json({ message: 'Unauthorized' });
     }

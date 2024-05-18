@@ -1,16 +1,16 @@
-const movieService = require('../services/movieService');
+const loginService = require('../services/loginService');
 
-class loginController {
+class LoginController {
     async signin(req, res, next) {
         try {
-            const { title, year, genre, director, rating, similarBestMovie, scores, mainActors} = req.body;
-            console.log(title);
-            const createdMovie = await movieService.createMovie(title, year, genre, director, rating, similarBestMovie, scores, mainActors);
-            res.status(201).json(createdMovie);
+            const { username, password} = req.body;
+            const result = await loginService.signin(username, password);
+            // console.log(result);
+            res.status(200).json(result);
         } catch (error) {
             next(error);
         }
     }
 }
 
-module.exports = new MovieController();
+module.exports = new LoginController();
