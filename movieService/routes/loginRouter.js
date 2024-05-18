@@ -10,19 +10,21 @@ const { CognitoIdentityServiceProvider } = require('aws-sdk');
 
 const router = express.Router();
 
-router.get('/', authorizeRole('Admin'), movieController.get);
-
-router.get('/:id', validateIdQuery, movieController.getById);
-
-router.post('/create', movieController.create);
+router.post('/signin', async (req, res) => {
+  const { username, password, newPassword, email } = req.body;
+  try {
+      const result = await login(username, password);
+      res.status(200).json(result);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+});
 
 const AWS_REGION = 'ap-southeast-2';
 
 const cognito = new CognitoIdentityServiceProvider({
     region: AWS_REGION
   });
-
-
 
 const poolData = {
     UserPoolId: 'ap-southeast-2_RITtm6OS2',

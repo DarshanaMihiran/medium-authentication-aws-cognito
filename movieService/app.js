@@ -4,9 +4,12 @@ const { connectDatabase } = require('./config/database.config');
 const routes = require('./routes/route.config');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./config/swagger.config'); 
-const errorHandler = require('./middlewares/exceptionMiddleware');
 const { insertInitialData } = require('./utils/seedData')
 const configureMiddleware = require('./serviceRegistration/middleware.registration');
+const jwt = require('jsonwebtoken');
+const AWS = require('aws-sdk');
+const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+
 require('./serviceRegistration/env.registration');
 
 const port = process.env.PORT || 3000;
@@ -34,4 +37,4 @@ connectDatabase(process.env.DB_URL, JSON.parse(process.env.DB_OPTIONS))
     })
     .catch(err => {
         console.error('Database connection error:', err);
-    });
+});
