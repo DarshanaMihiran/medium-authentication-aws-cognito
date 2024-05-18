@@ -1,0 +1,36 @@
+# Dependency directories
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables file
+.env
+
+# Logs
+logs
+*.log*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.idea/
+.vscode/
+
+# Compiled output
+dist/
+build/
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Coverage output
+coverage/
